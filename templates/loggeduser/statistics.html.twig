@@ -1,0 +1,37 @@
+{% extends 'loggeduser/index.html.twig' %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('statistics') }}
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('statistics') }}
+{% endblock %}
+{% block body %}
+
+<div id="infos" data-stats="{{ data|json_encode }}"></div>
+
+	
+
+<div class="d-md-flex h-md-100 align-items-center">
+	<!-- First Half -->
+
+	<div class="col-md-6 p-0 bg-indigo h-md-100 text-center pt-5">
+		<div id="chart1" class="h-75 w-100 pt-5"></div>
+		<div class="h-25 w-100 pt-5">
+			<button id="yearly" class="btn btn-primary">yearly</button>
+			<button id="monthly" class="btn btn-primary">monthly</button>
+			<div class="mt-2">
+				<button id="previous" class="btn btn-primary">&lt previous</button>
+				<button id="next" class="btn btn-primary">next &gt</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Second Half -->
+	<div class="col-md-6 p-0 bg-white h-md-100 pt-5">
+		<div id="chart2" class="h-50 w-100 pt-5"></div>
+	    <div id="chart3" class="h-50 w-100"></div>
+	</div>
+</div>
+{% endblock %}

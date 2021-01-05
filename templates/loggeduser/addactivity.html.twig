@@ -1,0 +1,35 @@
+{% extends 'loggeduser/index.html.twig' %}
+{% block body %}
+
+	{{ form_start(form, {'attr':{'class': "form-inline d-flex"}}) }}
+		<div class="container projects-section">
+	        <div class="col-md-10 col-lg-8 mx-auto text-center">
+	        	<h2 class="text-black mb-5">Add a new activity to your repertoire</h2>
+	        	<div class="row justify-content-center">
+	            	{{ form_row(form.name, {'attr': {'class': 'form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-1'}}) }}
+	        	</div>
+		        <div class="row mb-5 justify-content-center">
+		            {{ form_row(form.description, {'attr': {'class': 'form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-1'}}) }}
+		        </div>
+	        	<div class="row justify-content-center">
+	            	{{ form_row(form.save, {'attr': {'class': 'btn btn-primary mb-5 mb-sm-2'}}) }}
+	        	</div>
+	        	<div class="row justify-content-center">
+	        		<a href="/Action" class="btn btn-primary mt-3"> back to calendar</a>
+	        	</div>
+	        	<div class="row my-custom-class-for-errors">
+	        		{{ form_errors(form) }}
+	    		</div>
+	    		{% if app.session.flashbag.peekAll|length > 0 %}
+                        {% for type, messages in app.session.flashbag.all %}
+                            {% for message in messages %}
+                                <div class="pt-5 {{ type ? type : '' }}">
+                                    {{ message|trans({}, domain|default('messages')) }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                {% endif %}
+	        </div>
+	    </div>
+	{{ form_end(form) }}
+{% endblock %}

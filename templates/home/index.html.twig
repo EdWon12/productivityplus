@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta property="og:title" content="Productivity+"/>
+		<meta property="og:type" content="website"/>
+		<meta property="og:image" content="{{ asset('build/images/og-image.jpg') }}"/>
+		<meta property="og:site_name" content="Productivity+"/>
+		<meta property="og:description" content="Productivity+ helps you being more productive toward your goal by showing you advanced statistics about the way you spend your time. Check it out!"/>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">        
+        <title>{% block title %}Productivity+{% endblock %}</title>
+        
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('bootstrap') }}
+    {% endblock %}
+    </head>
+    <body>
+        {% block navbar %}
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" mb-3 id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="/">Productivity+</a>
+                <button class="navbar-toggler navbar-toggler-right text-black font-weight-bold border border-black" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/">Home</a></li>
+                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Login/Register</a>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="/login">login</a>
+                              <a class="dropdown-item" href="/register">register</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/About">About the author</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="" data-toggle="modal" data-target="#contact_modal">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        {% endblock %}
+        {% block body %}
+            <section class="projects-section text-center min-vh-100 d-flex flex-column" id="about">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 mx-auto">
+                            <h2 class="text-black mb-5">Productivity+ is a website that allows its users to check various statistics about how they spend their time based on their input and also provides a few tips for the day based on the weather of the users' current location.
+                            </h2>
+                            <p class="bg-danger">
+                            The site is currently on beta phase.
+                            </p>
+                            <p class="text-black mt-5 mb-5">
+                                <br>
+                                Focused around the productivity toward a subjective goal that the user chooses, the user inputs how he spent his previous week and qualifies his actions of productive/non-productive/neutral.<br>
+                                Within a few minutes per week, you can know how some of your activities influence some other activities/the way you spend your time, and which activities are necessery(may they be toward your goal or in general), which ones could be spent in a better way considering your goal.
+                            </p>
+                            <p class="text-black mb-5">
+                                <div class="mb-3">You can <a href="/register">register here</a>, it is avalaible for free.<br></div><br>
+                                Altho we accept donations for hosting costs, maintenance, a coffee or a meal.<br>
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                    <input type="hidden" name="cmd" value="_s-xclick" />
+                                    <input type="hidden" name="hosted_button_id" value="ZWJSJQRU7RVWE" />
+                                    <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                                    <img alt="" border="0" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1" />
+                                </form><br>
+                                The site will have more functions attached to it if more people find it useful.
+                            </p>
+
+                            <h2 class="text-black">We wish you a nice and productive day!</h2>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endblock %}
+        {% block flashes %}
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endblock %}
+        {% include 'contact.html.twig' %}
+        {% block contactJS %}
+            {{ encore_entry_script_tags('contact') }}
+        {% endblock %}    
+        {% block javascripts %}
+        {{ encore_entry_script_tags('bootstrap') }}
+        {% endblock %}
+    </body>
+</html>

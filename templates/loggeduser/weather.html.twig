@@ -1,0 +1,89 @@
+{% extends 'loggeduser/index.html.twig' %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('weather') }}
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('weather') }}
+{% endblock %}
+{% block body %}
+	<div id="infos1" data-id="{{ currentWeather }}"></div>
+	<div id="infos2" data-id="{{ tomorrowWeather }}"></div>
+
+	<div class="container projects-section">
+		<div class="col mx-auto text-center">
+            	<div class="justify-content-center mb-5">
+                	<h2 class="text-black mb-5">Current location(scroll down to change):</h2>
+                </div>
+                <div class="justify-content-center mb-5">
+                	<p class="text-black text-center">{{ city }}</p>
+            	</div>
+         </div>
+		<div class="row justify-content-center no-gutters mb-2 mb-lg-0">
+		    <div class="col-lg-6 bg-light ">
+		    	<img id="currentimg" class="d-inline-block h-100 align-middle">
+		    </div>			
+		    <div class="col-lg-6">
+
+		        <div class="bg-light text-center h-100 project">
+		            <div class="d-flex h-100">
+		                <div class="project-text w-100 my-auto text-center">
+							<h2 class="text-black">Now</h2>
+		                    <h4 id="currenth4" class="text-black"></h4>
+		                    <p id="currentp" class="mb-0 text-black-50"></p>
+		                    <hr class="d-none d-lg-block mb-0 ml-auto">
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+
+		<div class="row justify-content-center no-gutters mb-2 mb-lg-0">
+		    <div class="col-lg-6 bg-light ">
+		    	<img id="tomorrowimg" class="d-inline-block h-100 align-middle">
+		    </div>			
+		    <div class="col-lg-6">
+
+		        <div class="bg-light text-center h-100 project">
+		            <div class="d-flex h-100">
+		                <div class="project-text w-100 my-auto text-center">
+		                	<h2 class="text-black">Tomorrow</h2>
+		                    <h4 id="tomorrowh4" class="text-black"></h4>
+		                    <p id="tomorrowp" class="mb-0 text-black-50"></p>
+		                    <hr class="d-none d-lg-block mb-0 ml-auto">
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	</div>	
+
+    <div class="container projects-section p-2">
+    	<div class="row">
+    		            <div class="col-md-10 col-lg-8 mx-auto text-center bg-light">
+                	<h2 class="text-black text-center mb-5 mt-3">Change location:</h2>
+                	{{ form_start(form, {'attr':{'class': "form-inline justify-content-center d-flex"}}) }}
+                	<div class="text-center mb-5">
+	                	<div class="text-center mb-5">
+	                        {{ form_row(form.CityName, {'attr': {'class': 'form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0'}}) }}
+	                    </div>
+	                    <div class="text-center mb-5">
+	                        {{ form_row(form.Country, {'attr': {'class': 'form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0'}}) }}
+	                    </div>
+	                    <div class="text-center">
+	                        {{ form_row(form.Change_location, {'attr': {'class': 'btn btn-primary'}}) }}
+	                    </div>
+	                    <div class="my-custom-class-for-errors text-center">
+	                        {{ form_errors(form) }}
+	                	</div>
+	                {{ form_end(form) }}
+	                </div>
+            </div>
+            
+        </div>
+    </div>
+{% endblock %}
+
+
+

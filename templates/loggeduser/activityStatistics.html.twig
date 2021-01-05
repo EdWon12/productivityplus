@@ -1,0 +1,31 @@
+{% extends 'loggeduser/index.html.twig' %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('activityStatistics') }}
+
+{% endblock %}
+{% block body %}
+	<div id="names" data-names="{{ names|json_encode }}"></div>
+	<div id="infos" data-stats="{{ data|json_encode }}"></div>
+	<div class="container projects-section">
+		<div class="col-md-10 col-lg-8 mx-auto text-center">
+			<div class="row justify-content-center mb-5">
+				<select id="activity" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0"></select>
+			</div>
+			<div class="row justify-content-center mb-5">
+				<h2 class="text-black">The way your day goes on average when the selected activity is present in that day:</h2>
+			</div>
+			<div class="row justify-content-center mb-2">
+				<div id="positive"></div><br>
+			</div>
+			<div class="row justify-content-center mb-2">
+				<div id="negative"></div><br>
+			</div>
+			<div class="row justify-content-center mb-2">
+				<div id="neutral"></div><br>
+			</div>
+			<div class="row justify-content-center mb-2">
+				<div id="nodata"></div><br>
+			</div>
+		</div>
+	</div>
+{% endblock %}

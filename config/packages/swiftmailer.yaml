@@ -1,0 +1,7 @@
+swiftmailer:
+    url: '%env(MAILER_URL)%'
+    spool: { type: 'memory' }
+    transport: 'smtp'
+    username: '8ebc73e04b28353a6c3df65cc32f39f1'
+    password: 'b60bc09ced4f5892de1ebc7d01f22622'
+    host: 'in-v3.mailjet.com'
