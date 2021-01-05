@@ -30,9 +30,9 @@ class WeatherController extends AbstractController
             $data = $form->getData();
             $city = $data['CityName'];
             $country = $data['Country'];
-            $geocoding = file_get_contents('https://eu1.locationiq.com/v1/search.php?key=14de1e0690a30c&city='.$city.'&country='.$country.'&format=json');
+            $geocoding = file_get_contents('https://eu1.locationiq.com/v1/search.php?key=INSERTAPIKEYHERE&city='.$city.'&country='.$country.'&format=json');
             $geocoding = json_decode($geocoding, true);
-            $weather = file_get_contents('https://api.openweathermap.org/data/2.5/onecall?lat='.$geocoding['0']['lat'].'&lon='.$geocoding['0']['lon'].'&exclude=minutely,hourly&appid=450388bdda6fdd542c72f78fa6736995');
+            $weather = file_get_contents('https://api.openweathermap.org/data/2.5/onecall?lat='.$geocoding['0']['lat'].'&lon='.$geocoding['0']['lon'].'&exclude=minutely,hourly&appid=INSERTAPIKEYHERE');
             $weather = json_decode($weather, true);
 
             return $this->render('loggeduser/weather.html.twig', [
@@ -46,9 +46,9 @@ class WeatherController extends AbstractController
         {
             $ip=$request->getClientIp();
             $latlong = explode(",", file_get_contents('https://ipapi.co/' . $ip . '/latlong/'));
-            $weather = file_get_contents('https://api.openweathermap.org/data/2.5/onecall?lat='.$latlong[0].'&lon='.$latlong[1].'&exclude=minutely,hourly&appid=450388bdda6fdd542c72f78fa6736995');
+            $weather = file_get_contents('https://api.openweathermap.org/data/2.5/onecall?lat='.$latlong[0].'&lon='.$latlong[1].'&exclude=minutely,hourly&appid=INSERTAPIKEYHERE');
             $weather = json_decode($weather, true);
-            $city = file_get_contents('https://eu1.locationiq.com/v1/reverse.php?key=14de1e0690a30c&lat='.$weather['lat'].'&lon='.$weather['lon'].'&normalizeaddress=1&format=json');
+            $city = file_get_contents('https://eu1.locationiq.com/v1/reverse.php?key=INSERTAPIKEYHERE&lat='.$weather['lat'].'&lon='.$weather['lon'].'&normalizeaddress=1&format=json');
             $city = json_decode($city, true);
             $city = $city['address']['city'].'('.$city['address']['county'].')';
 
